@@ -1,9 +1,11 @@
 from fastapi import FastAPI, Path
 from pydantic import BaseModel
 from typing import Optional
-
+from routers import users
 
 app = FastAPI()
+
+app.include_router(users.router)
 
 students = {
     1: {
