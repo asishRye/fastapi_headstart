@@ -2,7 +2,6 @@ from fastapi import FastAPI, Path
 from pydantic import BaseModel
 from typing import Optional
 
-from starlette.routing import request_response
 
 app = FastAPI()
 
@@ -39,7 +38,10 @@ def index():
 
 @app.get("/get-student/{student_id}")
 def get_student(student_id: int = Path(None, gt=0)):
-    return students[student_id]
+    if student_id not in students:
+        return {"error": "Student with provided id does not exist"}
+    else:
+        return students[student_id]
 
 
 @app.get("/get-student-name")
@@ -64,11 +66,20 @@ def update_student(student_id: int, student: UpdateStudent):
     if student_id not in students:
         return {"error": "Student with provided id does not exist"}
     else:
-        if student.name != None:
+        if student.name is not None:
             students[student_id].name = student.name
-        if student.age != None:
+        if student.age is not None:
             students[student_id].age = student.age
-        if student.year != None:
+        if student.year is not None:
             students[student_id].year = student.year
 
         return students[student_id]
+
+
+@app.delete("/delete-student/{student_id}")
+def delete_student(student_id: int):
+    if student_id not in students:
+        return {"error": "Student with provided id does not exist"}
+    else:
+        del students[student_id]
+        return {"message": "Student with provided id deleted"}
