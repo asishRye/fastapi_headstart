@@ -3,7 +3,7 @@ from fastapi import APIRouter
 router = APIRouter()
 
 
-@router.get("/superfakeurl")
+@router.get("/superfakeurl", tags=["fakeurl"])
 def fakeurl():
     return {"message": "This fake url works"}
 
