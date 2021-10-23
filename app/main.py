@@ -4,12 +4,14 @@ from typing import Optional
 from routers.users import users
 # from routers.db import postgres
 from routers.websockets import websocket, chat_app
+from routers.sqlalchemy import urls
 
 app = FastAPI()
 
 app.include_router(users.router)
 app.include_router(websocket.router)
 app.include_router(chat_app.router)
+app.include_router(urls.router)
 
 students = {
     1: {
