@@ -1,0 +1,6 @@
+postgres = {
+    "db_name": "<your db name here>",
+    "user": "<your postgres username here>",
+    "password": "<your postgres password here>",
+    "port": "5432"
+}
