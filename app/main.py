@@ -2,10 +2,13 @@ from fastapi import FastAPI, Path
 from pydantic import BaseModel
 from typing import Optional
 from routers.users import users
+# from routers.db import postgres
+from routers.websockets import websocket
 
 app = FastAPI()
 
 app.include_router(users.router)
+app.include_router(websocket.router)
 
 students = {
     1: {
