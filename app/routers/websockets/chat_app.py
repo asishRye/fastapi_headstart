@@ -94,9 +94,12 @@ async def websocket_postman_endpoint(websocket: WebSocket):
     while True:
         data = await websocket.receive_text()
         if data == "runbot":
-            custom = "Bot ran successfully"
+            await websocket.send_text("Bot ran successfully")
         elif data == "stopbot":
-            custom = "Bot is stopped"
+            await websocket.send_text("Bot stopped execution")
+        elif data == "terminate":
+            await websocket.send_text("Connection Terminated")
+            break
         else:
-            custom = "No instructions received"
-        await websocket.send_text(f"Message text was: {data} {custom}")
+            await websocket.send_text("Instructions unclear, try again")
+    await websocket.close()
