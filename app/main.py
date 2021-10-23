@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Path
 from pydantic import BaseModel
 from typing import Optional
-from routers import users
+from routers.users import users
 
 app = FastAPI()
 
