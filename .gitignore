@@ -3,3 +3,5 @@ __pycache__/*
 *.pyc
 app/settings.config
 alembic.ini
+Docker-Compose.yml
+Docker-Compose.yml
