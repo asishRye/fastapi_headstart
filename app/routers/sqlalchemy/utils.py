@@ -20,14 +20,18 @@ class Student(Base):
     name = Column(String(50))
     age = Column(Integer)
     grade = Column(String(50))
-    another_field = Column(String(50))
+    # another_field = Column(String(50))
 
 
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 
 
-def get_records():
-    print("Record fetched stub")
+def get_records(id: int):
+    try:
+        db_results = session.query(Student).filter(Student.id == id).first()
+        return db_results
+    except Exception as error:
+        print("Error occured", error)
 
 
 def write_records(obj=None):
