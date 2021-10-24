@@ -17,6 +17,8 @@
     1. (Run only once) docker build -t fastapi_headstart .
     2. docker run -d --name mycontainer -p 80:80 fastapi_headstart
     ```
+5. Rename <u>alembic.ini.example</u> file to <u>alembic.ini</u> and update the <i><u>sqlalchemy.ur</u>l</i> (Line 54) variable with your values.
+6. Rename <u>app/settings.config.example</u> file to <u>app/settings.config</u> and update with your postgres credentials.
 
 
 ## Routing
